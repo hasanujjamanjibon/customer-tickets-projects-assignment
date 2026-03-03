@@ -1,9 +1,9 @@
 const StatsCards = ({ progress }) => {
-  console.log(progress);
+
 
   return (
     <div
-      className={`h-62 max-w-[750px] lg:w-[750px] mx-auto  bg-gray-600 flex justify-center items-center bg-cover bg-no-repeat bg-center ${
+      className={`relative rounded-sm  p-8 text-white overflow-hidden bg-cover bg-no-repeat bg-center    ${
         progress === 'In-Progress'
           ? "bg-[url('./assets/AnalyticsOverview/inprogress-bg.png')]"
           : "bg-[url('./assets/AnalyticsOverview/resolved-bg.png')]"

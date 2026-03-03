@@ -1,9 +1,9 @@
 import CTAButton from '../CTAButton/CTAButton';
-import Navlist from '../Navlist';
+import Navlist from '../Navlist/Navlist';
 
 const NavBar = () => {
   return (
-    <div className='bg-white  sticky top-0'>
+    <div className='bg-white  sticky top-0 z-50'>
       <div className='navbar max-w-6xl mx-auto'>
         <div className='navbar-start mr-auto'>
           <div className='dropdown'>
@@ -31,7 +31,7 @@ const NavBar = () => {
               <Navlist />
             </ul>
           </div>
-          <a className='text-md lg:text-2xl font-bold min-w-max truncate'>
+          <a className='text-md lg:text-2xl font-bold min-w-max'>
             CS — Ticket System
           </a>
         </div>
