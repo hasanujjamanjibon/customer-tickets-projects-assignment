@@ -3,8 +3,8 @@ import Navlist from '../Navlist';
 
 const NavBar = () => {
   return (
-    <div className='bg-white  sticky top-0 '>
-      <div className='navbar container mx-auto'>
+    <div className='bg-white  sticky top-0'>
+      <div className='navbar max-w-6xl mx-auto'>
         <div className='navbar-start mr-auto'>
           <div className='dropdown'>
             <div tabIndex={0} role='button' className='btn btn-ghost lg:hidden'>
@@ -31,7 +31,9 @@ const NavBar = () => {
               <Navlist />
             </ul>
           </div>
-          <a className=' text-md font-bold'>CS — Ticket System</a>
+          <a className='text-md lg:text-2xl font-bold min-w-max truncate'>
+            CS — Ticket System
+          </a>
         </div>
 
         <div className='navbar-end  hidden lg:flex'>
