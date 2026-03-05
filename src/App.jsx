@@ -6,10 +6,14 @@ import Swal from 'sweetalert2';
 import Footer from './components/Footer/Footer';
 
 function App() {
+  const [tickets, setTickets] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [inProgressData, setInProgressData] = useState([]);
   const [resolved, setResolved] = useState([]);
 
-
+  const existingData = tickets.filter((task) => !resolved.includes(task?.id));
+  const resolvedData = tickets.filter((task) => resolved.includes(task?.id));
+  console.log(resolvedData);
 
   const submitOnTaskStatus = (CardID) => {
     const existingData = JSON.parse(localStorage.getItem('in-progress')) || [];
@@ -38,14 +42,19 @@ function App() {
     const isExistingData = JSON.parse(localStorage.getItem('resolved'));
     if (isExistingData) {
       const newResolvedData = [...isExistingData, ...newResolvedTask];
-      localStorage.setItem('resolved', JSON.stringify(newResolvedData));
       setResolved(newResolvedData);
+      localStorage.setItem('resolved', JSON.stringify(newResolvedData));
+      const newProgressData = inProgressData.filter((task) => task !== CardID);
+      localStorage.setItem('in-progress', JSON.stringify(newProgressData));
+      setInProgressData(newProgressData);
     } else {
       localStorage.setItem('resolved', JSON.stringify(newResolvedTask));
       setResolved(newResolvedTask);
+      const newProgressData = inProgressData.filter((task) => task !== CardID);
+      localStorage.setItem('in-progress', JSON.stringify(newProgressData));
+      setInProgressData(newProgressData);
     }
   };
-
   useEffect(() => {
     const loadDatafromLocalStorage = async () => {
       const storedProgressData =
@@ -58,6 +67,21 @@ function App() {
     };
     loadDatafromLocalStorage();
   }, []);
+  useEffect(() => {
+    const fetchTickets = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('/tickets-data.json');
+        const data = await response.json();
+        setTickets(data);
+      } catch (error) {
+        console.error('Data fetch korte somossa hoyeche:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchTickets();
+  }, []);
 
   return (
     <div>
@@ -67,7 +91,9 @@ function App() {
         submitOnTaskStatus={submitOnTaskStatus}
         inProgressData={inProgressData}
         submitOnResolved={submitOnResolved}
-        resolved={resolved}
+        resolvedData={resolvedData}
+        tickets={existingData}
+        loading={loading}
       />
       <Footer />
     </div>

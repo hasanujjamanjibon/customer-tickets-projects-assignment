@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import TicketCard from '../TicketCard/TicketCard';
 import TaskStatusCard from '../TaskStatusCard/TaskStatusCard';
 
@@ -6,32 +5,14 @@ const DashboardSummary = ({
   submitOnTaskStatus,
   inProgressData,
   submitOnResolved,
-  resolved,
+  resolvedData,
+  tickets,
+  loading,
 }) => {
-  const [tickets, setTickets] = useState([]);
-  const [loading, setLoading] = useState(true);
-
   const matchedTasks = tickets.filter((task) =>
     inProgressData.includes(task?.id),
   );
-  const resolvedTasks = tickets.filter((task) => resolved.includes(task?.id));
-  console.log(resolvedTasks);
-
-  useEffect(() => {
-    const fetchTickets = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch('/tickets-data.json');
-        const data = await response.json();
-        setTickets(data);
-      } catch (error) {
-        console.error('Data fetch korte somossa hoyeche:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchTickets();
-  }, []);
+  // const resolvedTasks = tickets.filter((task) => resolved.includes(task?.id));
 
   return (
     <div className='grid grid-cols-1 lg:grid-cols-4 gap-6 px-2  min-h-fit max-w-6xl mx-auto'>
@@ -62,8 +43,8 @@ const DashboardSummary = ({
             Resolved Task
           </h2>
           <div className='space-y-3 max-h-96 overflow-y-auto'>
-            {resolvedTasks.length > 0 ? (
-              resolvedTasks?.map(({ id, title }) => (
+            {resolvedData.length > 0 ? (
+              resolvedData?.map(({ id, title }) => (
                 <p
                   key={id}
                   className='text-base text-black p-2 shadow-sm bg-[#E0E7FF] font-medium   rounded-sm'
