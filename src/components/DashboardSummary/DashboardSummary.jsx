@@ -12,10 +12,8 @@ const DashboardSummary = ({
   const matchedTasks = tickets.filter((task) =>
     inProgressData.includes(task?.id),
   );
-  // const resolvedTasks = tickets.filter((task) => resolved.includes(task?.id));
-
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-4 gap-6 px-2  min-h-fit max-w-6xl mx-auto'>
+    <div className='grid grid-cols-1 lg:grid-cols-4 gap-6 px-2 pb-20 min-h-fit max-w-6xl mx-auto'>
       <aside className='lg:col-span-1 order-first lg:order-last space-y-6'>
         <div className='p-2 rounded-sm '>
           <h2 className='font-semibold text-gray-700 mb-2 text-2xl'>
