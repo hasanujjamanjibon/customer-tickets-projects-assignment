@@ -31,9 +31,7 @@ const NavBar = () => {
               <Navlist />
             </ul>
           </div>
-          <a className='text-md lg:text-2xl font-bold min-w-max'>
-            CS — Ticket System
-          </a>
+          <a className='text-base lg:text-2xl font-bold'>CS — Ticket System</a>
         </div>
 
         <div className='navbar-end  hidden lg:flex'>
