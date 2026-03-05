@@ -1,11 +1,14 @@
 import { RiCalendarLine } from '@remixicon/react';
 
-const TicketCard = ({ ticket }) => {
+const TicketCard = ({ ticket, submitOnTaskStatus }) => {
   const { id, title, description, customer, priority, status, createdAt } =
     ticket || {};
 
   return (
-    <div className='bg-white p-5 rounded-xl shadow-md border border-gray-200'>
+    <div
+      onClick={() => submitOnTaskStatus(id)}
+      className='bg-white p-5 rounded-xl shadow-md border border-gray-200 cursor-pointer'
+    >
       <div className='flex justify-between items-start mb-3'>
         <h3 className='font-bold text-lg leading-tight'>{title}</h3>
         <div
@@ -19,7 +22,7 @@ const TicketCard = ({ ticket }) => {
       </div>
       <p className='text-gray-600 text-sm mb-4 line-clamp-2'>{description}</p>
       <div className='flex justify-between items-center text-xs text-gray-400 mt-auto pt-4 border-t'>
-        <span className=' font-semibold'>
+        <span className=' font-medium'>
           #{id}{' '}
           <span
             className={` ${
