@@ -3,9 +3,13 @@ import AnalyticsOverview from './components/AnalyticsOverview/AnalyticsOverview'
 import DashboardSummary from './components/DashboardSummary/DashboardSummary';
 import NavBar from './components/Navbar/NavBar';
 import Swal from 'sweetalert2';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const [inProgressData, setInProgressData] = useState([]);
+  const [resolved, setResolved] = useState([]);
+
+
 
   const submitOnTaskStatus = (CardID) => {
     const existingData = JSON.parse(localStorage.getItem('in-progress')) || [];
@@ -29,12 +33,28 @@ function App() {
     });
   };
 
+  const submitOnResolved = (CardID) => {
+    const newResolvedTask = [CardID];
+    const isExistingData = JSON.parse(localStorage.getItem('resolved'));
+    if (isExistingData) {
+      const newResolvedData = [...isExistingData, ...newResolvedTask];
+      localStorage.setItem('resolved', JSON.stringify(newResolvedData));
+      setResolved(newResolvedData);
+    } else {
+      localStorage.setItem('resolved', JSON.stringify(newResolvedTask));
+      setResolved(newResolvedTask);
+    }
+  };
+
   useEffect(() => {
     const loadDatafromLocalStorage = async () => {
-      const storedData =
+      const storedProgressData =
         (await JSON.parse(localStorage.getItem('in-progress'))) || [];
+      const storedResolvedData =
+        (await JSON.parse(localStorage.getItem('resolved'))) || [];
 
-      setInProgressData(storedData);
+      setInProgressData(storedProgressData);
+      setResolved(storedResolvedData);
     };
     loadDatafromLocalStorage();
   }, []);
@@ -42,11 +62,14 @@ function App() {
   return (
     <div>
       <NavBar />
-      <AnalyticsOverview inProgressData={inProgressData} />
+      <AnalyticsOverview inProgressData={inProgressData} resolved={resolved} />
       <DashboardSummary
         submitOnTaskStatus={submitOnTaskStatus}
         inProgressData={inProgressData}
+        submitOnResolved={submitOnResolved}
+        resolved={resolved}
       />
+      <Footer />
     </div>
   );
 }
