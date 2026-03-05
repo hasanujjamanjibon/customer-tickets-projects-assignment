@@ -1,10 +1,8 @@
-import { RiCalendarLine } from '@remixicon/react';
 import { useEffect, useState } from 'react';
 import TicketCard from '../TicketCard/TicketCard';
 import TaskStatusCard from '../TaskStatusCard/TaskStatusCard';
 
 const DashboardSummary = ({ submitOnTaskStatus, inProgressData }) => {
-
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -36,13 +34,16 @@ const DashboardSummary = ({ submitOnTaskStatus, inProgressData }) => {
             Task Status
           </h2>
           <div className='space-y-3'>
-            {matchedTasks?.map((task) => (
-              <TaskStatusCard key={task?.id} task={task} />
-            ))}
+            {matchedTasks.lenth > 0 ? (
+              matchedTasks?.map((task) => (
+                <TaskStatusCard key={task?.id} task={task} />
+              ))
+            ) : (
+              <p className='text-sm text-gray-500 italic'>
+                Select a ticket to add to Task Status
+              </p>
+            )}
           </div>
-          {/* <p className='text-sm text-gray-500 italic'>
-            Select a ticket to add to Task Status
-          </p> */}
         </div>
 
         <div className='p-2 rounded-sm '>
