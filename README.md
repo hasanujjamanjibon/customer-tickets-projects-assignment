@@ -1,17 +1,90 @@
-# React + Vite
+# CS --- Ticket System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔗 **Live Site:** https://cs-ticket-system-2.netlify.app/
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 What is JSX, and why is it used?
 
-## React Compiler
+`JSX` is a syntax extension for JavaScript that
+allows developers to write HTML-like code inside JavaScript.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Why JSX is used:
 
-## Expanding the ESLint configuration
+- Makes UI code easier to read and write, Combines HTML structure and JavaScript logic in one place, Improves developer experience
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# customer-tickets-projects-assignment
+---
+
+## 📌 What is the difference between State and Props?
+
+`State`:
+state is a built-in object used by components to store and manage dynamic data that changes over time in response to user interactions, API calls, or other events.
+
+`Props`:
+props are read-only data passed down from parent to child components.
+
+---
+
+## 📌 What is the useState hook, and how does it work?
+
+`useState` hook is a fundamental function in React that allows functional components to manage local state.
+
+```
+
+### How it works:
+
+1.  Initializes state with a value
+2.  Returns current state
+3.  Provides a function to update the state
+4.  When state updates, the component re-renders automatically
+
+---
+
+## 📌 How can you share state between components in React?
+
+`useState` hook is a function that allows you to add state to a functional component.
+
+### process:
+
+*Move state to parent component
+*Pass data as props
+*Pass update functions as props to child components
+
+For larger applications, Context API or external state management
+libraries can be used.
+
+---
+
+## 📌 How is event handling done in React?
+
+React uses camelCase syntax for events and passes functions as event
+handlers.
+
+---
+
+## 🚀 Project Overview
+
+The **CS --- Ticket System** is a React-based ticket management
+application where:
+
+- Tickets load from JSON data
+- Users can move tickets to In Progress
+- Tickets can be marked as Resolved
+- Resolved tickets are filtered from the main list
+- Data is stored in localStorage for persistence
+
+---
+
+## 🛠️ Technologies Used
+
+- React
+- Tailwind CSS
+- LocalStorage API
+- Component-Based Architecture
+
+---
+
+### Author
+
+CS --- Ticket System Project
+```
