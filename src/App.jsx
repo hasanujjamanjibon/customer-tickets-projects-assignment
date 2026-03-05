@@ -47,12 +47,24 @@ function App() {
       const newProgressData = inProgressData.filter((task) => task !== CardID);
       localStorage.setItem('in-progress', JSON.stringify(newProgressData));
       setInProgressData(newProgressData);
+      return Swal.fire({
+        icon: 'success',
+        title: 'Resolved Successfully Complete!',
+        showConfirmButton: false,
+        timer: 1000,
+      });
     } else {
       localStorage.setItem('resolved', JSON.stringify(newResolvedTask));
       setResolved(newResolvedTask);
       const newProgressData = inProgressData.filter((task) => task !== CardID);
       localStorage.setItem('in-progress', JSON.stringify(newProgressData));
       setInProgressData(newProgressData);
+      return Swal.fire({
+        icon: 'success',
+        title: 'Resolved Successfully Complete!',
+        showConfirmButton: false,
+        timer: 1000,
+      });
     }
   };
   useEffect(() => {

@@ -1,4 +1,9 @@
-import { RiFacebookFill, RiLinkedinFill, RiMailFill, RiTwitterXLine } from '@remixicon/react';
+import {
+  RiFacebookFill,
+  RiLinkedinFill,
+  RiMailFill,
+  RiTwitterXLine,
+} from '@remixicon/react';
 
 const Footer = () => {
   return (
@@ -8,11 +13,11 @@ const Footer = () => {
           <h2 className='text-white text-xl font-bold mb-4'>
             CS — Ticket System
           </h2>
-          <p className='text-sm leading-relaxed text-gray-500'>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
+          <p className='text-sm leading-relaxed text-gray-500 text-justify'>
+            "CS — Ticket System provides a seamless platform to manage customer
+            inquiries and resolve issues faster. We empower support teams with
+            intuitive tools to streamline workflows and deliver exceptional
+            service experiences
           </p>
         </div>
 
